@@ -1,0 +1,40 @@
+body{
+    background-color: #FAFAFA;
+    margin: 0 10%;
+}
+nav{
+    margin: 10px 0 0 0;
+}
+nav ul{
+    float: right;
+}
+nav ul li{
+    text-align: left;
+    list-style: none;
+    font-family: Arial;
+    float: left;
+    word-break: normal;
+    padding: 10px 15px ;
+    margin: 0 15px;
+    width: auto;
+    transition:0.5s;
+    -webkit-transition:0.5s;
+}
+nav ul li:hover{
+    background-color: #149AD4;
+}
+nav ul li a:hover{
+    color: #ffffff;
+}
+
+.current_index{
+    background-color: #149AD4;
+    color: #FAFAFA;
+}
+.current_index:hover{
+    background-color: #444444;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}

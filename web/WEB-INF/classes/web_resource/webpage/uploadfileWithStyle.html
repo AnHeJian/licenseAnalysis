@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Home</title>
+
+    <!-- Main StyleSheet -->
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="style-responsive.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="css/libs/animate.css">
+
+
+    <!-- bxSlider CSS file -->
+    <link href="css/jquery.bxslider.css" rel="stylesheet" />
+
+
+    <!-- LayerSlider stylesheet -->
+    <link rel="stylesheet" href="layerslider/css/layerslider.css" type="text/css">
+    <!-- External libraries: jQuery & GreenSock -->
+    <script src="layerslider/js/jquery.js" type="text/javascript"></script>
+    <script src="layerslider/js/greensock.js" type="text/javascript"></script>
+    <!-- LayerSlider script files -->
+    <script src="layerslider/js/layerslider.transitions.js" type="text/javascript"></script>
+    <script src="layerslider/js/layerslider.kreaturamedia.jquery.js" type="text/javascript"></script>
+
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+
+
+    <!-- bxSlider Javascript file -->
+    <script src="js/jquery.bxslider.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="lightbox/jquery.fancybox.css" media="screen" />
+    <script src="lightbox/jquery.fancybox.js"></script>
+
+</head>
+
+<body>
+
+<div class="header">
+    <div class="container">
+        <a href="#" class="logo"><img src="images/logo.png" alt="" /></a>
+        <div class="nav mobile">
+            <div class="title">Menu <span class="fa "></span></div>
+            <ul>
+                <li><a href="#faqs_part">FAQs</a></li>
+                <li><a href="#features">FEATURES</a></li>
+                <li><a href="#testimonials_part">Testimonials </a></li>
+                <li><a href="#pricing_part">Pricing</a></li>
+                <li><a href="#contact_part">Contact</a></li>
+                <li><a href="#subscribe_part">Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="file-box">
+    <p class="text">上传单个文件:</p>
+    <form method="post" action="uploadFile" enctype="multipart/form-data">
+        <input type='button' class='btn' value='浏览...' />
+        <input type='text' name='fileTextField' id='fileTextField' class='txt' />
+        <input type="file" name="fileField" class="file" id="fileField" size="28"/>
+        <input type="submit" name="submit" class="btn" id = "fileSubmit" value="上传" disabled="true" />
+    </form>
+</div>
+
+
+<p class="text">上传文件夹:</p>
+<div class="file-box">
+    <form method="post" action="uploadFolder" enctype="multipart/form-data">
+        <input type='button' class='btn' value='浏览...' />
+        <input type='text' name='folderTextField' id='folderTextField' class='txt' />
+        <input type="file" name="folderField" class="file" webkitdirectory multiple  id="folderField" size="28"/>
+        <input type="submit" name="submit" class="btn" id = "folderSubmit" value="上传" disabled="true"/>
+    </form>
+</div>
+</body>
+
+
+<script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" >
+    document.getElementById("fileField").addEventListener("change", function(event) {
+        var fileInfo = $("#fileField").val();
+        if(fileInfo!="") {
+            var index =fileInfo.lastIndexOf("\\");
+            var name = fileInfo.substr(index + 1);
+            $("#fileTextField").attr("value", name);
+            $("#fileSubmit").attr("disabled", false);
+        }
+    }, false);
+
+    document.getElementById("folderField").addEventListener("change", function(event) {
+        var files = $(this).val();
+        if(files!=""){
+            var filesList = event.target.files;
+            var filesCount = filesList.length;
+            var filesRoot = filesList[0].name;
+            $("#folderTextField").attr("value",filesRoot +" 等共" + filesCount.toString()+"个文件");
+            $("#folderSubmit").attr("disabled", false);
+        }
+    }, false);
+
+</script>
+
+</html>
